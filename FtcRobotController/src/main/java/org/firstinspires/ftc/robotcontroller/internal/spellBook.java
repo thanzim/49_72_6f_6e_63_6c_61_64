@@ -56,8 +56,6 @@ public class spellBook {
 
     VuforiaLocalizer vuforia;
 
-    TestVu vu = new TestVu();
-
     /**
      * Welcome to Ironclad 8080's spell-book.
      *
