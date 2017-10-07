@@ -21,6 +21,7 @@ public class Auto_v1 extends LinearOpMode {
         waitForStart();
 
         magic.Sense();
+        magic.moveFwd(1, 1000);
 
     }
 
