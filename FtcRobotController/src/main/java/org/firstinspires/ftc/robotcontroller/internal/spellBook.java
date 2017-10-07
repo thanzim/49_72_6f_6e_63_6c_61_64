@@ -44,6 +44,15 @@ public class spellBook {
 
     public void init(HardwareMap hwm, Telemetry tel) throws InterruptedException {
 
+        /**
+         * Welcome to Ironclad 8080's spell-book.
+         *
+         * This is basically a method repository or cache for all of our methods
+         *
+         * This class is used in other programs for methods. Mainly Autonomous protocols
+         */
+
+
         RFMotor = hwm.get(DcMotor.class, "RFMotor");
         RBMotor = hwm.get(DcMotor.class, "RBMotor");
         LFMotor = hwm.get(DcMotor.class, "LFMotor");
@@ -73,7 +82,9 @@ public class spellBook {
         tel.update();
     }
 
-    public void turnrWithGyro(double power, int angle )throws InterruptedException{
+    public void sensum_recta(double power, int angle )throws InterruptedException{
+
+        //Turn right with gyro
 
         mrGyro.calibrate();
         Thread.sleep(1000);
@@ -97,7 +108,9 @@ public class spellBook {
 
     }
 
-    public void turnlWithGyro(double power, int angle) throws InterruptedException{
+    public void sensum_sinistram(double power, int angle) throws InterruptedException{
+
+        //turn left with gyro
 
         mrGyro.calibrate();
         Thread.sleep(1000);
@@ -120,7 +133,9 @@ public class spellBook {
 
     }
 
-    public void gyroTel(Telemetry tel){
+    public void conversus_autem(Telemetry tel){
+
+        //basic gyro telemetry
 
         zV = mrGyro.getIntegratedZValue();
 
@@ -129,30 +144,34 @@ public class spellBook {
 
     }
 
-    public void Sense() throws InterruptedException{
+    public void inveneris_comede() throws InterruptedException{
+
+        //Jewel mission decision method
 
         Flickr.setPosition(1);
 
         if (colorSensor.blue() > 2){
 
-            moveRight(0.3, 500);
+            recta_moveri(0.3, 500);
 
-            moveLeft(0.3, 500);
+            movere_sinistram(0.3, 500);
 
 
         }
 
         if (colorSensor.red() > 2){
 
-            moveLeft(0.3, 500);
+            movere_sinistram(0.3, 500);
 
-            moveRight(0.3, 500);
+            recta_moveri(0.3, 500);
 
         }
 
     }
 
-    public void moveLeft(double power, long millis) throws InterruptedException{
+    public void movere_sinistram(double power, long millis) throws InterruptedException{
+
+        //Basic move left
 
         RFMotor.setPower(power);
         RBMotor.setPower(power);
@@ -168,7 +187,9 @@ public class spellBook {
 
     }
 
-    public void moveRight(double power, long millis) throws  InterruptedException{
+    public void recta_moveri(double power, long millis) throws  InterruptedException{
+
+        //Basic move right
 
         RFMotor.setPower(-power);
         RBMotor.setPower(-power);
@@ -184,7 +205,9 @@ public class spellBook {
 
     }
 
-    public void moveBack(double power, long millis) throws InterruptedException{
+    public void recedite(double power, long millis) throws InterruptedException{
+
+        //Basic move backwards
 
         RFMotor.setPower(-power);
         RBMotor.setPower(-power);
@@ -200,7 +223,9 @@ public class spellBook {
 
     }
 
-    public void moveFwd(double power, long millis) throws  InterruptedException{
+    public void movere_deinceps(double power, long millis) throws  InterruptedException{
+
+        //Basic move forwards
 
         RFMotor.setPower(power);
         RBMotor.setPower(power);
