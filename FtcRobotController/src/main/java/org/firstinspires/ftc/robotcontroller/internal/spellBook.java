@@ -11,22 +11,34 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.vuforia.Vuforia;
 
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
+import org.firstinspires.ftc.robotcore.external.matrices.VectorF;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
+import static android.R.attr.format;
 import static java.lang.Thread.sleep;
 
 /**
- * Created by Sagar on 10/7/2017.
+ * Created by Flash on 10/7/2017.
  */
 
 /**
  * THIS IS WHERE ALL THE MAGIC HAPPENS BOYS
- */
+ **/
 
 public class spellBook {
-
-
 
     DcMotor RFMotor;
     DcMotor RBMotor;
@@ -42,16 +54,21 @@ public class spellBook {
 
     int zV;
 
-    public void init(HardwareMap hwm, Telemetry tel) throws InterruptedException {
+    VuforiaLocalizer vuforia;
 
-        /**
-         * Welcome to Ironclad 8080's spell-book.
-         *
-         * This is basically a method repository or cache for all of our methods
-         *
-         * This class is used in other programs for methods. Mainly Autonomous protocols
-         */
+    TestVu vu = new TestVu();
 
+    /**
+     * Welcome to Ironclad 8080's spell-book.
+     *
+     * This is basically a method repository or cache for all of our methods
+     *
+     * This class is used in other programs for methods. Mainly Autonomous protocols
+     **/
+
+    public void initium(HardwareMap hwm, Telemetry tel) throws InterruptedException {
+
+        //Initialization for Auto_v1.java
 
         RFMotor = hwm.get(DcMotor.class, "RFMotor");
         RBMotor = hwm.get(DcMotor.class, "RBMotor");
@@ -81,6 +98,14 @@ public class spellBook {
         tel.addLine("Ready to go compadre");
         tel.update();
     }
+
+    /**
+     *
+     *
+     * The following are general movement methods for a 4wd mecanum chassis
+     *
+     *
+     **/
 
     public void sensum_recta(double power, int angle )throws InterruptedException{
 
@@ -241,6 +266,105 @@ public class spellBook {
 
     }
 
+    public void serpens_sinistram(double power, long millis) throws InterruptedException{
+
+        //strafe left
+
+        RFMotor.setPower(power);
+        RBMotor.setPower(-power);
+        LFMotor.setPower(-power);
+        LBMotor.setPower(power);
+
+        sleep(millis);
+
+        RFMotor.setPower(0);
+        RBMotor.setPower(0);
+        LFMotor.setPower(0);
+        LBMotor.setPower(0);
+
+    }
+
+    public void serpens_recta(double power, long millis) throws InterruptedException{
+
+        //strafe right
+
+        RFMotor.setPower(-power);
+        RBMotor.setPower(power);
+        LFMotor.setPower(power);
+        LBMotor.setPower(-power);
+
+        sleep(millis);
+
+        RFMotor.setPower(0);
+        RBMotor.setPower(0);
+        LFMotor.setPower(0);
+        LBMotor.setPower(0);
+
+    }
+
+    /**
+     *
+     *
+     *Vuforia specific development methods
+     *
+     *
+     **/
+
+    public void vu_arbitrium(HardwareMap hwm, Telemetry tel) throws InterruptedException{
+
+        //make a decision based on Vuforia decoding
+        //For better understanding of what's happening, refer to @TestVu
+
+
+
+        int cameraMonitorViewId = hwm.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwm.appContext.getPackageName());
+        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
+
+        parameters.vuforiaLicenseKey = "AaoqgOL/////AAAAGbOH/YIsFkN4qAHOJSZVLf8gODe8T4TOfcAa/PBKY/8Py7aUNG/Hf2wvZT4OeCPqO+q4RYULQ1VjmxrsvwKtUPLpwH7InEZKH5MA9gD/X4j2Bz0O1say2B5okUBajZDZ6dnAY8q9ngcJNVKnFQqIBLlLIdRsy6S6JonETSJXNtVJpVLmL9A70AxEp4+0NwfAVH7rP5oTeckggK5lG/eRUPYVlOthkVCXTDEJCXB3vnGfbzy2hnUxwZtJkES3Hnk0w6RGJKazKOas1pM24dCiNHj2/Wtz3DrTK5IxHuICKplblKil2ecH6dV0+pDO8wCEjTJBAunIbLugU9ctKDQFaTOLL8Rdb9oJIzy/bhWyLM5s";
+
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+
+        VuforiaTrackables relicTracktables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
+        VuforiaTrackable relicTemplate = relicTracktables.get(0);
+        relicTemplate.setName("relicVuMarkTemplate");
+
+        sleep(1000);
+
+        relicTracktables.activate();
+
+        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+
+        if (vuMark != RelicRecoveryVuMark.UNKNOWN){
+
+            tel.addData("VuMark", "Right visible", vuMark);
+
+            OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
+
+            if (pose != null){
+
+                VectorF trans = pose.getTranslation();
+                Orientation rot = Orientation.getOrientation(pose, AxesReference.EXTRINSIC, AxesOrder.XYX, AngleUnit.DEGREES);
+
+                double tX = trans.get(0);
+                double tY = trans.get(1);
+                double tZ = trans.get(2);
+
+                double rX = rot.firstAngle;
+                double rY = rot.secondAngle;
+                double rZ = rot.thirdAngle;
+
+            }
+
+        }else{
+
+            tel.addData("Vumark", "not visible");
+
+        }
+
+        tel.update();
+
+    }
 
 }
 
