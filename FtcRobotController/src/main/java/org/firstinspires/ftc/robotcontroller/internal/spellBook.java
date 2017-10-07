@@ -34,6 +34,7 @@ public class spellBook {
 
     public void init(HardwareMap hwm, Telemetry tel) {
 
+        // Fuck u niggggggggaaaaaaaar
         RFMotor = hwm.get(DcMotor.class, "RFMotor");
         RBMotor = hwm.get(DcMotor.class, "RBMotor");
         LFMotor = hwm.get(DcMotor.class, "LFMotor");
