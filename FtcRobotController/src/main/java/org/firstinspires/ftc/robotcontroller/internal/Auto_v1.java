@@ -18,9 +18,12 @@ public class Auto_v1 extends LinearOpMode {
 
         magic.init(hardwareMap, telemetry);
 
+        magic.gyroTel(telemetry);
+
         waitForStart();
 
         magic.Sense();
+
         magic.moveFwd(1, 1000);
 
     }
