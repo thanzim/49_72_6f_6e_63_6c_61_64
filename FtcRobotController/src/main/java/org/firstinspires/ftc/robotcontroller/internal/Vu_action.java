@@ -17,7 +17,7 @@ public class Vu_action extends LinearOpMode{
     public void runOpMode() throws InterruptedException{
 
         magic.initium(hardwareMap, telemetry);
-        
+
         waitForStart();
 
         while(opModeIsActive()){
