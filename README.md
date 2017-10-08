@@ -46,6 +46,7 @@ October 7, 2017
 **************************************************************************************
 #### Version 1.1.1
  * Renamed methods and method calling to a more 'spellbook' esque system
+   - Really feeling the Harry Potter lol
 
 Ironclad 8080
 
