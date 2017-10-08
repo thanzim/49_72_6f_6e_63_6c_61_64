@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 public class Vu_action extends LinearOpMode{
 
-    spellBook magic = new spellBook();
+    robot magic = new robot();
 
     @Override
     public void runOpMode() throws InterruptedException{

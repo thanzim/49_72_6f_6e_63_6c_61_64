@@ -30,19 +30,19 @@ import static java.lang.Thread.sleep;
  * THIS IS WHERE ALL THE MAGIC HAPPENS BOYS
  **/
 
-public class spellBook {
+public class robot {
 
-    DcMotor RFMotor;
-    DcMotor RBMotor;
-    DcMotor LFMotor;
-    DcMotor LBMotor;
+    public DcMotor RFMotor;
+    public DcMotor RBMotor;
+    public DcMotor LFMotor;
+    public DcMotor LBMotor;
 
-    Servo Flickr;
+    public Servo Flickr;
 
-    ColorSensor colorSensor;
+    public ColorSensor colorSensor;
 
-    GyroSensor gyro;
-    ModernRoboticsI2cGyro mrGyro;
+    public GyroSensor gyro;
+    public ModernRoboticsI2cGyro mrGyro;
 
     int zV;
 
@@ -58,7 +58,7 @@ public class spellBook {
 
     public void init(HardwareMap hwm, Telemetry tel) throws InterruptedException {
 
-        //Initialization for Auto_v1.java
+        //Initialization for RelicRecoveryAutonomous.java
 
         RFMotor = hwm.get(DcMotor.class, "RFMotor");
         RBMotor = hwm.get(DcMotor.class, "RBMotor");
@@ -199,6 +199,17 @@ public class spellBook {
 
     }
 
+    public void left(double power) {
+
+        //Basic move left
+
+        RFMotor.setPower(power);
+        RBMotor.setPower(power);
+        LFMotor.setPower(-power);
+        LBMotor.setPower(-power);
+
+    }
+
     public void right(double power, long millis) throws InterruptedException {
 
         //Basic move right
@@ -215,6 +226,16 @@ public class spellBook {
         LFMotor.setPower(0);
         LBMotor.setPower(0);
 
+    }
+
+    public void right(double power){
+
+        //Basic move right
+
+        RFMotor.setPower(-power);
+        RBMotor.setPower(-power);
+        LFMotor.setPower(power);
+        LBMotor.setPower(power);
     }
 
     public void back(double power, long millis) throws InterruptedException {
@@ -235,6 +256,16 @@ public class spellBook {
 
     }
 
+    public void back(double power) {
+
+        //Basic move backwards
+
+        RFMotor.setPower(-power);
+        RBMotor.setPower(-power);
+        LFMotor.setPower(-power);
+        LBMotor.setPower(-power);
+
+    }
     public void foward(double power, long millis) throws InterruptedException {
 
         //Basic move forwards
@@ -251,6 +282,21 @@ public class spellBook {
         LFMotor.setPower(0);
         LBMotor.setPower(0);
 
+    }
+
+    public void foward(double power) {
+
+        //Basic move forwards
+
+        RFMotor.setPower(power);
+        RBMotor.setPower(power);
+        LFMotor.setPower(power);
+        LBMotor.setPower(power);
+
+    }
+
+    public void stop(){
+        foward(0);  // lazy coding, amirite?
     }
 
     public void strafeLeft(double power, long millis) throws InterruptedException {
