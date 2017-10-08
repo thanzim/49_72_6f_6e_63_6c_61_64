@@ -591,6 +591,7 @@ August 3, 2015
  * Stock FTC SDK file
 
 Ironclad 8080
+
 October 7, 2017
 
 **************************************************************************************
@@ -600,6 +601,7 @@ October 7, 2017
  * TestVu.java was uploaded by Thanzim for future support of Vuforia in autonomous
 
 Ironclad 8080
+
 October 7, 2017
 
 **************************************************************************************
@@ -608,6 +610,7 @@ October 7, 2017
  * Basic autonomous for future development was added by Flash
 
 Ironclad 8080
+
 October 7, 2017
 
 **************************************************************************************
@@ -615,6 +618,7 @@ October 7, 2017
  * Methods for gyroscopic turnin were added into spellbook and implemented into Auto_v1.java
 
 Ironclad 8080
+
 October 7, 2017
 
 **************************************************************************************
@@ -622,6 +626,7 @@ October 7, 2017
  * Renamed methods and method calling to a more 'spellbook' esque system
 
 Ironclad 8080
+
 October 7, 2017
 
 **************************************************************************************
@@ -632,6 +637,7 @@ October 7, 2017
  * General syntax cleanup
 
 Ironclad 8080
+
 October 7, 2017
 
 **************************************************************************************
@@ -639,6 +645,7 @@ October 7, 2017
  * More cleanup
 
 Ironclad 8080
+
 October 7, 2017
 
 **************************************************************************************
@@ -647,16 +654,19 @@ October 7, 2017
  * Even more cleanup
 
 Ironclad 8080
+
 October 7, 2017
 
 **************************************************************************************
 #### Version 1.2.3
- * Furthered development for Vuforia-based decision system. Will need testing to develop further. Expected testing day: 10/13/2017
+ * Furthered development for Vuforia-based decision system. Will need testing to develop further.
+   - Expected testing day: 10/13/2017 
  * Removed unused import statements
  * Fixed spacing/formtting issues
  * Adding a README with a changelog (the one you're reading now :) )
 
 Ironclad 8080
+
 October 7, 2017
 **************************************************************************************
 
