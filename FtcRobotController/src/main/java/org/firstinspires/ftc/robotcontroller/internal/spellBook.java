@@ -56,7 +56,7 @@ public class spellBook {
      * This class is used in other programs for methods. Mainly Autonomous protocols
      **/
 
-    public void initium(HardwareMap hwm, Telemetry tel) throws InterruptedException {
+    public void init(HardwareMap hwm, Telemetry tel) throws InterruptedException {
 
         //Initialization for Auto_v1.java
 
@@ -94,7 +94,7 @@ public class spellBook {
      * The following are general movement methods for a 4wd mecanum chassis
      **/
 
-    public void sensum_recta(double power, int angle) throws InterruptedException {
+    public void basic_gyroTurn(double power, int angle) throws InterruptedException {
 
         //Turn right with gyro
 
@@ -120,7 +120,7 @@ public class spellBook {
 
     }
 
-    public void sensum_sinistram(double power, int angle) throws InterruptedException {
+    public void basic_leftGyroTurn(double power, int angle) throws InterruptedException {
 
         //turn left with gyro
 
@@ -145,7 +145,7 @@ public class spellBook {
 
     }
 
-    public void conversus_autem(Telemetry tel) {
+    public void gyroTelemetry(Telemetry tel) {
 
         //basic gyro telemetry
 
@@ -156,7 +156,7 @@ public class spellBook {
 
     }
 
-    public void inveneris_comede() throws InterruptedException {
+    public void bejewel() throws InterruptedException {
 
         //Jewel mission decision method
 
@@ -164,24 +164,24 @@ public class spellBook {
 
         if (colorSensor.blue() > 2) {
 
-            recta_moveri(0.3, 500);
+            right(0.3, 500);
 
-            movere_sinistram(0.3, 500);
+            left(0.3, 500);
 
 
         }
 
         if (colorSensor.red() > 2) {
 
-            movere_sinistram(0.3, 500);
+            left(0.3, 500);
 
-            recta_moveri(0.3, 500);
+            right(0.3, 500);
 
         }
 
     }
 
-    public void movere_sinistram(double power, long millis) throws InterruptedException {
+    public void left(double power, long millis) throws InterruptedException {
 
         //Basic move left
 
@@ -199,7 +199,7 @@ public class spellBook {
 
     }
 
-    public void recta_moveri(double power, long millis) throws InterruptedException {
+    public void right(double power, long millis) throws InterruptedException {
 
         //Basic move right
 
@@ -217,7 +217,7 @@ public class spellBook {
 
     }
 
-    public void recedite(double power, long millis) throws InterruptedException {
+    public void back(double power, long millis) throws InterruptedException {
 
         //Basic move backwards
 
@@ -235,7 +235,7 @@ public class spellBook {
 
     }
 
-    public void movere_deinceps(double power, long millis) throws InterruptedException {
+    public void foward(double power, long millis) throws InterruptedException {
 
         //Basic move forwards
 
@@ -253,7 +253,7 @@ public class spellBook {
 
     }
 
-    public void serpens_sinistram(double power, long millis) throws InterruptedException {
+    public void strafeLeft(double power, long millis) throws InterruptedException {
 
         //strafe left
 
@@ -271,7 +271,7 @@ public class spellBook {
 
     }
 
-    public void serpens_recta(double power, long millis) throws InterruptedException {
+    public void strafeRight(double power, long millis) throws InterruptedException {
 
         //strafe right
 
@@ -293,7 +293,7 @@ public class spellBook {
      * Vuforia specific development methods
      **/
 
-    public void vu_arbitrium(HardwareMap hwm, Telemetry tel) throws InterruptedException{
+    public void vudoo(HardwareMap hwm, Telemetry tel) throws InterruptedException{
 
         /**
          * Make a decision based on vuforia decoding
@@ -320,7 +320,7 @@ public class spellBook {
 
         if(vuMark == RelicRecoveryVuMark.RIGHT){
 
-            recta_moveri(1, 500);
+            right(1, 500);
 
             tel.addData("VuMark", "Right visible", vuMark);
 
@@ -343,7 +343,7 @@ public class spellBook {
 
         }else if(vuMark == RelicRecoveryVuMark.LEFT){
 
-            movere_sinistram(1, 500);
+            left(1, 500);
 
             tel.addData("VuMark", "Left visible", vuMark);
 
@@ -366,7 +366,7 @@ public class spellBook {
 
         }else if(vuMark == RelicRecoveryVuMark.CENTER){
 
-            recedite(1, 500);
+            back(1, 500);
 
             tel.addData("VuMark", "Center visible", vuMark);
 

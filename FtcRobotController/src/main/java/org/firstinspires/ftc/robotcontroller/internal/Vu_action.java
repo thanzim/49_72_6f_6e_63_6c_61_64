@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous(name = "vutest")
 
+
 public class Vu_action extends LinearOpMode{
 
     spellBook magic = new spellBook();
