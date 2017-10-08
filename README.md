@@ -1,4 +1,4 @@
-## Welcome!
+﻿## Welcome!
 This GitHub repository contains the source code that is used to build an Android app to control a *FIRST* Tech Challenge competition robot.  To use this SDK, download/clone the entire project to your local computer.
 
 If you are new to the *FIRST* Tech Challenge software and control system, you should visit the online wiki to learn how to install, configure, and use the software and control system:
@@ -38,6 +38,7 @@ Documentation for the FTC SDK is also included with this repository.  There is a
 
 ### Online User Forum
 For technical questions regarding the SDK, please visit the FTC Technology forum:
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://ftcforum.usfirst.org/forumdisplay.php?156-FTC-Technology
 
@@ -580,3 +581,8 @@ In this latest version of the FTC SDK (20150803_001) the following changes shoul
 
 T. Eng
 August 3, 2015
+
+
+
+### Changelog
+
