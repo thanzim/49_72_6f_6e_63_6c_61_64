@@ -24,6 +24,8 @@ public class Vu_action extends LinearOpMode{
 
             magic.vu_arbitrium(hardwareMap, telemetry);
 
+            break;
+
         }
 
     }

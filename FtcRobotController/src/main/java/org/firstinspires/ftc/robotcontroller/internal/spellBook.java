@@ -1,18 +1,11 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
-
-
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
-import com.vuforia.Vuforia;
-
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
@@ -27,7 +20,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
-import static android.R.attr.format;
 import static java.lang.Thread.sleep;
 
 /**
@@ -85,7 +77,8 @@ public class spellBook {
 
         mrGyro.calibrate();
 
-        while (mrGyro.isCalibrating()){}
+        while (mrGyro.isCalibrating()) {
+        }
 
         RFMotor.setDirection(DcMotor.Direction.REVERSE);
         RBMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -98,14 +91,10 @@ public class spellBook {
     }
 
     /**
-     *
-     *
      * The following are general movement methods for a 4wd mecanum chassis
-     *
-     *
      **/
 
-    public void sensum_recta(double power, int angle )throws InterruptedException{
+    public void sensum_recta(double power, int angle) throws InterruptedException {
 
         //Turn right with gyro
 
@@ -131,7 +120,7 @@ public class spellBook {
 
     }
 
-    public void sensum_sinistram(double power, int angle) throws InterruptedException{
+    public void sensum_sinistram(double power, int angle) throws InterruptedException {
 
         //turn left with gyro
 
@@ -156,7 +145,7 @@ public class spellBook {
 
     }
 
-    public void conversus_autem(Telemetry tel){
+    public void conversus_autem(Telemetry tel) {
 
         //basic gyro telemetry
 
@@ -167,13 +156,13 @@ public class spellBook {
 
     }
 
-    public void inveneris_comede() throws InterruptedException{
+    public void inveneris_comede() throws InterruptedException {
 
         //Jewel mission decision method
 
         Flickr.setPosition(1);
 
-        if (colorSensor.blue() > 2){
+        if (colorSensor.blue() > 2) {
 
             recta_moveri(0.3, 500);
 
@@ -182,7 +171,7 @@ public class spellBook {
 
         }
 
-        if (colorSensor.red() > 2){
+        if (colorSensor.red() > 2) {
 
             movere_sinistram(0.3, 500);
 
@@ -192,7 +181,7 @@ public class spellBook {
 
     }
 
-    public void movere_sinistram(double power, long millis) throws InterruptedException{
+    public void movere_sinistram(double power, long millis) throws InterruptedException {
 
         //Basic move left
 
@@ -210,7 +199,7 @@ public class spellBook {
 
     }
 
-    public void recta_moveri(double power, long millis) throws  InterruptedException{
+    public void recta_moveri(double power, long millis) throws InterruptedException {
 
         //Basic move right
 
@@ -228,7 +217,7 @@ public class spellBook {
 
     }
 
-    public void recedite(double power, long millis) throws InterruptedException{
+    public void recedite(double power, long millis) throws InterruptedException {
 
         //Basic move backwards
 
@@ -246,7 +235,7 @@ public class spellBook {
 
     }
 
-    public void movere_deinceps(double power, long millis) throws  InterruptedException{
+    public void movere_deinceps(double power, long millis) throws InterruptedException {
 
         //Basic move forwards
 
@@ -264,7 +253,7 @@ public class spellBook {
 
     }
 
-    public void serpens_sinistram(double power, long millis) throws InterruptedException{
+    public void serpens_sinistram(double power, long millis) throws InterruptedException {
 
         //strafe left
 
@@ -282,7 +271,7 @@ public class spellBook {
 
     }
 
-    public void serpens_recta(double power, long millis) throws InterruptedException{
+    public void serpens_recta(double power, long millis) throws InterruptedException {
 
         //strafe right
 
@@ -301,19 +290,15 @@ public class spellBook {
     }
 
     /**
-     *
-     *
-     *Vuforia specific development methods
-     *
-     *
+     * Vuforia specific development methods
      **/
 
     public void vu_arbitrium(HardwareMap hwm, Telemetry tel) throws InterruptedException{
 
-        //make a decision based on Vuforia decoding
-        //For better understanding of what's happening, refer to @TestVu
-
-
+        /**
+         * Make a decision based on vuforia decoding
+         * For a better understanding @see TestVu
+         **/
 
         int cameraMonitorViewId = hwm.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwm.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
@@ -333,13 +318,15 @@ public class spellBook {
 
         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
 
-        if (vuMark != RelicRecoveryVuMark.UNKNOWN){
+        if(vuMark == RelicRecoveryVuMark.RIGHT){
+
+            recta_moveri(1, 500);
 
             tel.addData("VuMark", "Right visible", vuMark);
 
-            OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
+            OpenGLMatrix pose = ((VuforiaTrackableDefaultListener) relicTemplate.getListener()).getPose();
 
-            if (pose != null){
+            if(pose != null){
 
                 VectorF trans = pose.getTranslation();
                 Orientation rot = Orientation.getOrientation(pose, AxesReference.EXTRINSIC, AxesOrder.XYX, AngleUnit.DEGREES);
@@ -354,15 +341,60 @@ public class spellBook {
 
             }
 
-        }else{
+        }else if(vuMark == RelicRecoveryVuMark.LEFT){
 
-            tel.addData("Vumark", "not visible");
+            movere_sinistram(1, 500);
 
+            tel.addData("VuMark", "Left visible", vuMark);
+
+            OpenGLMatrix pose = ((VuforiaTrackableDefaultListener) relicTemplate.getListener()).getPose();
+
+            if(pose != null){
+
+                VectorF trans = pose.getTranslation();
+                Orientation rot = Orientation.getOrientation(pose, AxesReference.EXTRINSIC, AxesOrder.XYX, AngleUnit.DEGREES);
+
+                double tX = trans.get(0);
+                double tY = trans.get(1);
+                double tZ = trans.get(2);
+
+                double rX = rot.firstAngle;
+                double rY = rot.secondAngle;
+                double rZ = rot.thirdAngle;
+
+            }
+
+        }else if(vuMark == RelicRecoveryVuMark.CENTER){
+
+            recedite(1, 500);
+
+            tel.addData("VuMark", "Center visible", vuMark);
+
+            OpenGLMatrix pose = ((VuforiaTrackableDefaultListener) relicTemplate.getListener()).getPose();
+
+            if(pose != null){
+
+                VectorF trans = pose.getTranslation();
+                Orientation rot = Orientation.getOrientation(pose, AxesReference.EXTRINSIC, AxesOrder.XYX, AngleUnit.DEGREES);
+
+                double tX = trans.get(0);
+                double tY = trans.get(1);
+                double tZ = trans.get(2);
+
+                double rX = rot.firstAngle;
+                double rY = rot.secondAngle;
+                double rZ = rot.thirdAngle;
+
+            }else{
+
+                tel.addData("Vumark", "not visible");
+
+            }
+
+            tel.update();
         }
-
-        tel.update();
-
     }
-
 }
+
+
 
