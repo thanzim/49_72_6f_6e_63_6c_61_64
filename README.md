@@ -3,7 +3,7 @@
 ## This is Ironclad 8080's program repository, made by Ironclad's software team, Thanzim and Flash.
 
 ##### Contact us at Ironclad8080@gmail.com
-##### DO NOT USE/COPY/MODIFY ANY OF THIS CONTENT WITHOUT EXPLICIT WRITTEN PERMISSION (ask for permission through email, preferbly)
+##### DO NOT USE/COPY/MODIFY ANY OF THIS CONTENT WITHOUT EXPLICIT WRITTEN PERMISSION (ask for permission through email, preferebly)
 
 
 ### Changelog
