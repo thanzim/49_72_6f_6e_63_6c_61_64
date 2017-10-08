@@ -20,7 +20,7 @@ October 7, 2017
 
 **************************************************************************************
 #### Version 1.0.2
- * Spellbook was added to Repository by @Flash
+ * Spellbook was added by @Flash
  * Basic autonomous for future development was added by @Flash
 
 Ironclad 8080
@@ -29,7 +29,7 @@ October 7, 2017
 
 **************************************************************************************
 #### Version 1.1.0
- * Methods for gyroscopic turnin were added into spellbook and implemented into Auto_v1.java
+ * Methods for gyroscopic turning were added into spellbook and implemented into Auto_v1.java
 
 Ironclad 8080
 
@@ -45,7 +45,7 @@ October 7, 2017
 
 **************************************************************************************
 #### Version 1.2.0
- * Added a Vuforio method which will be eventually developed into a full blown decision making system based on VuCode
+ * Added a Vuforia method which will be eventually developed into a full blown decision making system based on VuCode
  * Created a new class ("Vu_action") to develop and implement Vuforia
  * Changed creator names to actual creator names instead of the default PC username
  * General syntax cleanup
@@ -73,15 +73,21 @@ October 7, 2017
 
 **************************************************************************************
 #### Version 1.2.3
- * Furthered development for Vuforia-based decision system. Will need testing to develop further.
+ * Furthered development for Vuforia based decision system. Will need testing to develop further.
    - Expected testing day: 10/13/2017 
  * Removed unused import statements
  * Fixed spacing/formtting issues
- * Adding a README with a changelog (the one you're reading now :) )
+ * Adding a README with a changelog (the one you're reading now :stuck_out_tongue_winking_eye: )
 
 Ironclad 8080
 
 October 7, 2017
 **************************************************************************************
+#### Version 1.2.4
+ * Fixed some typos in the README (oops :sweat_smile: ) 
+
+Ironclad 8080
+
+October 7, 2017
 
  
