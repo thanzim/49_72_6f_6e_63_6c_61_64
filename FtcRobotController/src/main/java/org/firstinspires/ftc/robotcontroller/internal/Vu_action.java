@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 /**
- * Created by Flash on 10/7/2017.
+ * Created by Flash on 10/7/2017
  **/
 
 @Autonomous(name = "vutest")
