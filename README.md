@@ -1,4 +1,14 @@
-﻿### Changelog
+﻿# Welcome
+
+## This is Ironclad 8080's program repository, made by Ironclads software team.
+@Flash
+@Thanzim
+
+
+
+
+**************************************************************************************
+### Changelog
 **************************************************************************************
 #### Version 1.0.0
 
