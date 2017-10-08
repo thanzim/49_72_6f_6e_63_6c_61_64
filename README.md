@@ -11,8 +11,8 @@ October 7, 2017
 **************************************************************************************
 #### Version 1.0.1
 
- * GyroTest.java was uploaded by Thanzim for developmental purposes
- * TestVu.java was uploaded by Thanzim for future support of Vuforia in autonomous
+ * GyroTest.java was uploaded by @Thanzim for developmental purposes
+ * TestVu.java was uploaded by @Thanzim for future support of Vuforia in autonomous
 
 Ironclad 8080
 
@@ -20,8 +20,8 @@ October 7, 2017
 
 **************************************************************************************
 #### Version 1.0.2
- * Spellbook was added to Repository by Flash
- * Basic autonomous for future development was added by Flash
+ * Spellbook was added to Repository by @Flash
+ * Basic autonomous for future development was added by @Flash
 
 Ironclad 8080
 
