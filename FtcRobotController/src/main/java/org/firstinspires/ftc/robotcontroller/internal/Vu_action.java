@@ -12,18 +12,18 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 public class Vu_action extends LinearOpMode{
 
-    robot magic = new robot();
+    robot robo = new robot();
 
     @Override
     public void runOpMode() throws InterruptedException{
 
-        magic.initium(hardwareMap, telemetry);
+        robo.init(hardwareMap, telemetry);
 
         waitForStart();
 
         while(opModeIsActive()){
 
-            magic.vu_arbitrium(hardwareMap, telemetry);
+            robo.vudoo(hardwareMap, telemetry);
 
             break;
 

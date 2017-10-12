@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.GyroSensor;
@@ -55,6 +56,15 @@ public class robot {
      *
      * This class is used in other programs for methods. Mainly Autonomous protocols
      **/
+
+
+
+
+    public boolean checkStop(){
+
+    return LinearOpMode.
+
+    }
 
     public void init(HardwareMap hwm, Telemetry tel) throws InterruptedException {
 
@@ -238,35 +248,8 @@ public class robot {
         LBMotor.setPower(power);
     }
 
-    public void back(double power, long millis) throws InterruptedException {
 
-        //Basic move backwards
-
-        RFMotor.setPower(-power);
-        RBMotor.setPower(-power);
-        LFMotor.setPower(-power);
-        LBMotor.setPower(-power);
-
-        sleep(millis);
-
-        RFMotor.setPower(0);
-        RBMotor.setPower(0);
-        LFMotor.setPower(0);
-        LBMotor.setPower(0);
-
-    }
-
-    public void back(double power) {
-
-        //Basic move backwards
-
-        RFMotor.setPower(-power);
-        RBMotor.setPower(-power);
-        LFMotor.setPower(-power);
-        LBMotor.setPower(-power);
-
-    }
-    public void foward(double power, long millis) throws InterruptedException {
+    public void move(double power, long millis) throws InterruptedException {
 
         //Basic move forwards
 
@@ -284,7 +267,7 @@ public class robot {
 
     }
 
-    public void foward(double power) {
+    public void move(double power) {
 
         //Basic move forwards
 
@@ -296,7 +279,7 @@ public class robot {
     }
 
     public void stop(){
-        foward(0);  // lazy coding, amirite?
+        move(0);  // lazy coding, amirite?
     }
 
     public void strafeLeft(double power, long millis) throws InterruptedException {
@@ -412,7 +395,7 @@ public class robot {
 
         }else if(vuMark == RelicRecoveryVuMark.CENTER){
 
-            back(1, 500);
+            move(-1, 500);
 
             tel.addData("VuMark", "Center visible", vuMark);
 
