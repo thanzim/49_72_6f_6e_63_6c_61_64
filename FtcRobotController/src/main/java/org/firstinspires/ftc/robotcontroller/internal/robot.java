@@ -33,6 +33,9 @@ import static java.lang.Thread.sleep;
 
 public class robot {
 
+
+
+
     public DcMotor RFMotor;
     public DcMotor RBMotor;
     public DcMotor LFMotor;
@@ -60,11 +63,6 @@ public class robot {
 
 
 
-    public boolean checkStop(){
-
-    return LinearOpMode.
-
-    }
 
     public void init(HardwareMap hwm, Telemetry tel) throws InterruptedException {
 
@@ -103,7 +101,7 @@ public class robot {
     /**
      * The following are general movement methods for a 4wd mecanum chassis
      **/
-
+    @Deprecated
     public void basic_gyroTurn(double power, int angle) throws InterruptedException {
 
         //Turn right with gyro
@@ -130,6 +128,7 @@ public class robot {
 
     }
 
+    @Deprecated
     public void basic_leftGyroTurn(double power, int angle) throws InterruptedException {
 
         //turn left with gyro

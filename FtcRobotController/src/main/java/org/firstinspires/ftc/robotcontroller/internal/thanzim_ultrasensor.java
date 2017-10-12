@@ -14,15 +14,15 @@ public class thanzim_ultrasensor extends robot {
 
     }
 
-    public void moveUntillLargerThanValue(double pwr, int value, UltrasonicSensor ultra, boolean flag){
+    public void moveUntillLargerThanValue(double pwr, int value, UltrasonicSensor ultra, boolean equalto, LinearOpMode method){
 
-        if (flag){
-            while(ultra.getUltrasonicLevel() > value ){
+        if (equalto){
+            while(ultra.getUltrasonicLevel() >= value && method.opModeIsActive() ){
                 move(pwr);
             }
         }
         else{
-            while(ultra.getUltrasonicLevel() > value ){
+            while(ultra.getUltrasonicLevel() > value && method.opModeIsActive()){
                 move(pwr);
             }
         }

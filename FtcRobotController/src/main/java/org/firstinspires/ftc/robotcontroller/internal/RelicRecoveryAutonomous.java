@@ -24,11 +24,11 @@ public class RelicRecoveryAutonomous extends LinearOpMode {
 
             robo.bejewel(); //Hit jewel
 
-            robo.foward(1, 1000); //fwd
+            robo.move(1, 1000); //fwd
 
             robo.strafeLeft(1, 2500); // strafe left
 
-            robo.back(1, 2000);//backwards
+            robo.move(-1, 2000);//backwards
 
     }
 
