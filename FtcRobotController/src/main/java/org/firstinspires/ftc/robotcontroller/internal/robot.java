@@ -68,12 +68,12 @@ public class robot {
 
         //Initialization for RelicRecoveryAutonomous.java
 
-        RFMotor = hwm.get(DcMotor.class, "RFMotor");
-        RBMotor = hwm.get(DcMotor.class, "RBMotor");
-        LFMotor = hwm.get(DcMotor.class, "LFMotor");
-        LBMotor = hwm.get(DcMotor.class, "LBMotor");
+        RFMotor = hwm.get(DcMotor.class, "RF");
+        RBMotor = hwm.get(DcMotor.class, "RB");
+        LFMotor = hwm.get(DcMotor.class, "LF");
+        LBMotor = hwm.get(DcMotor.class, "LB");
 
-        Flickr = hwm.get(Servo.class, "flickr");
+        Flickr = hwm.get(Servo.class, "flck");
 
         colorSensor = hwm.get(ColorSensor.class, "CS");
 

@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * Created by Robotics15 on 10/12/2017.
  */
 
-@Autonomous
+@Autonomous(name="testauto", group = "")
 public class TestAutonomous extends LinearOpMode{
 
     robot robo = new robot();
