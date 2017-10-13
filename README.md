@@ -100,4 +100,19 @@ Ironclad 8080
 
 October 7, 2017
 **************************************************************************************
+#### Version 1.3
+ * Finalized Gyro Code and moved code due to bugs
+ * Change naming scheme
+ * Added more Mecanum methods and removed back() and foward() with a universak move() function
+ * Added some WIP ultrasonic code
+ * Deprecated older gyro code
+ * Added untested and limited isOpModeActive support
+ * Created 'testauto' autonomous for testing
+ * And much more that we forgot...
+ 
+ Ironclad 8080
+ 
+ October 13, 2017
+ **************************************************************************************
+
  
