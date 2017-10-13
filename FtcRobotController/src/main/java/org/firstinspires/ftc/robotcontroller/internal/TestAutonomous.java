@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class TestAutonomous extends LinearOpMode{
 
     robot robo = new robot();
+    thanzim_gyro tgyro = new thanzim_gyro();
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -19,9 +20,9 @@ public class TestAutonomous extends LinearOpMode{
 
         waitForStart();
 
-        robo.gyroAbsoluteTurn(90,1, this);
-        robo.gyroRelativeTurn(-35, 1, this);
-        robo.gyroAbsoluteTurn(90,1,this);
+        tgyro.gyroAbsoluteTurn(90,1, this);
+        tgyro.gyroRelativeTurn(-35, 1, this);
+        tgyro.gyroAbsoluteTurn(90,1,this);
 
 
     }
