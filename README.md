@@ -100,4 +100,19 @@ Ironclad 8080
 
 October 7, 2017
 **************************************************************************************
+#### Version 1.3
+ * Fixed NullPointException() error
+ * Finalized Gyro Code
+ * Changed naming scheme (back to regular)
+ * Added more Mecanum methods
+ * Replaced back() and forward() methods with a universal move() function
+ * Added some WIP ultrasonic code
+ * Deprecaed older gyro code
+ * Added untested and limited isOpModeActive support
+ * Created 'testauto' autonomous for testing and developmental purposes
+ * Other bug fixes
+
+Ironclad 8080
+
+October 13, 2017
  
