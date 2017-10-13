@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 /**
- * Created by Robotics15 on 10/12/2017.
+ * Created by Thanzim on 10/12/2017.
  */
 
 @Autonomous(name="testauto", group = "")

@@ -3,7 +3,7 @@ package org.firstinspires.ftc.robotcontroller.internal;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 /**
- * Created by Leopard on 10/8/2017.
+ * Created by Thanzim on 10/8/2017.
  */
 
 public class thanzim_gyro extends robot {

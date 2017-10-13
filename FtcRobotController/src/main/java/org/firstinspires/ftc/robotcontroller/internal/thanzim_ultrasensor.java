@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 
 /**
- * Created by Leopard on 10/8/2017.
+ * Created by Thanzim on 10/8/2017.
  */
 
 public class thanzim_ultrasensor extends robot {

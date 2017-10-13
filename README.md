@@ -115,4 +115,11 @@ October 7, 2017
 Ironclad 8080
 
 October 13, 2017
+**************************************************************************************
+#### Version 1.3.1
+ * Added a Remote control class configured for mecanum wheels
+
+Ironclad 8080
+
+October 13, 2017
  
