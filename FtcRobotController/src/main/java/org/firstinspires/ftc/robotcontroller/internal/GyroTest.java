@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
 @Autonomous(name="Gyro_Testing_DONT_USE",group="Test")
 public class GyroTest extends LinearOpMode {
 
-    GyroSensor gyro;
+    GyroSensor gyro; //gyrosensor
     ModernRoboticsI2cGyro mrGyro;
 
     @Override
