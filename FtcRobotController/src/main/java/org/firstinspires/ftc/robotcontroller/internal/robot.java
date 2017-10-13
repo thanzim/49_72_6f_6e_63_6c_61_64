@@ -36,17 +36,17 @@ public class robot {
 
 
 
-    public static DcMotor RFMotor;
-    public static DcMotor RBMotor;
-    public static DcMotor LFMotor;
-    public static DcMotor LBMotor;
+    public DcMotor RFMotor;
+    public DcMotor RBMotor;
+    public DcMotor LFMotor;
+    public DcMotor LBMotor;
 
-    public static Servo Flickr;
+    public Servo Flickr;
 
-    public static ColorSensor colorSensor;
+    public ColorSensor colorSensor;
 
-    public static GyroSensor gyro;
-    public static ModernRoboticsI2cGyro mrGyro;
+    public GyroSensor gyro;
+    public ModernRoboticsI2cGyro mrGyro;
 
     int zV;
     int heading;
