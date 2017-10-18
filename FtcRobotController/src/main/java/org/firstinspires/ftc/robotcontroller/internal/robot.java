@@ -41,7 +41,12 @@ public class robot {
     public static DcMotor LFMotor;
     public static DcMotor LBMotor;
 
+    public static DcMotor Arm;
+
     public static Servo Flickr;
+    public static Servo leftArm;
+    public static Servo rightArm;
+
 
     public static ColorSensor colorSensor;
 
@@ -73,15 +78,16 @@ public class robot {
         LFMotor = hwm.get(DcMotor.class, "LF");
         LBMotor = hwm.get(DcMotor.class, "LB");
 
+        Arm = hwm.get(DcMotor.class, "arm");
+
         Flickr = hwm.get(Servo.class, "flck");
+        leftArm = hwm.get(Servo.class, "ls");
+        rightArm = hwm.get(Servo.class, "rs");
 
         colorSensor = hwm.get(ColorSensor.class, "CS");
 
         gyro = hwm.gyroSensor.get("g");
         mrGyro = (ModernRoboticsI2cGyro) gyro;
-
-
-        sleep(1000);
 
         mrGyro.calibrate();
 
@@ -97,6 +103,50 @@ public class robot {
         tel.addLine("Ready to go compadre");
         tel.update();
     }
+
+
+
+
+
+
+    public void initDriveTrain(HardwareMap hwm, Telemetry tel) throws InterruptedException {
+
+        //Initialization for RelicRecoveryAutonomous.java
+
+        RFMotor = hwm.get(DcMotor.class, "RF");
+        RBMotor = hwm.get(DcMotor.class, "RB");
+        LFMotor = hwm.get(DcMotor.class, "LF");
+        LBMotor = hwm.get(DcMotor.class, "LB");
+
+        Arm = hwm.get(DcMotor.class, "arm");
+
+        Flickr = hwm.get(Servo.class, "flck");
+        leftArm = hwm.get(Servo.class, "ls");
+        rightArm = hwm.get(Servo.class, "rs");
+
+        colorSensor = hwm.get(ColorSensor.class, "CS");
+
+        gyro = hwm.gyroSensor.get("g");
+        mrGyro = (ModernRoboticsI2cGyro) gyro;
+
+
+        LFMotor.setDirection(DcMotor.Direction.REVERSE);
+        LBMotor.setDirection(DcMotor.Direction.REVERSE);
+
+        colorSensor.enableLed(true);
+        Flickr.setPosition(0.6);
+
+        tel.addLine("Ready to go drivetrain");
+        tel.update();
+
+
+    }
+
+
+
+
+
+
 
     /**
      * The following are general movement methods for a 4wd mecanum chassis

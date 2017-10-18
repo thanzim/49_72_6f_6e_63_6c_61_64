@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 /**
@@ -15,89 +16,71 @@ import com.qualcomm.robotcore.util.Range;
 @TeleOp(name = "MecRC")
 public class MecanumRC extends LinearOpMode {
 
-    DcMotor RFMotor;
-    DcMotor RBMotor;
-    DcMotor LFMotor;
-    DcMotor LBMotor;
+    robot robo = new robot();
+    ElapsedTime runtime = new ElapsedTime();
 
-    DcMotor Slide;
 
-    Servo leftArm;
-    Servo rightArm;
+    float slideup;
+    float slidedwn;
+
+    float Ch1;
+    float Ch2;
+    float Ch3;
+
+    float RFPower;
+    float RBPower;
+    float LFPower;
+    float LBPower;
+
+    float SlidePwr;
+
+    double timePressed = -501;
 
     @Override
     public void runOpMode() throws InterruptedException{
 
-        telemetry.addData("Status", "Starting...");
-        telemetry.update();
+        robo.initDriveTrain(hardwareMap, telemetry);
 
-        Slide = hardwareMap.get(DcMotor.class, "slide");
-
-        RFMotor = hardwareMap.get(DcMotor.class, "RFMotor");
-        RBMotor = hardwareMap.get(DcMotor.class, "RBMotor");
-        LFMotor = hardwareMap.get(DcMotor.class, "LFMotor");
-        LBMotor = hardwareMap.get(DcMotor.class, "LBMotor");
-
-        leftArm = hardwareMap.get(Servo.class, "leftArm");
-        rightArm = hardwareMap.get(Servo.class, "rightArm");
-
-        leftArm.setPosition(0);
-        rightArm.setPosition(1);
-
-        RFMotor.setDirection(DcMotor.Direction.REVERSE);
-        RBMotor.setDirection(DcMotor.Direction.REVERSE);
-
-        sleep(2000);
-        telemetry.addData("Status", "Initialized, go ahead and hit start papi");
-        telemetry.update();
+        robo.leftArm.setPosition(1);
+        robo.rightArm.setPosition(0);
 
         waitForStart();
         
         while (opModeIsActive()){
 
-            float slideup  = gamepad2.right_trigger;
-            float slidedwn = gamepad2.left_trigger;
+            slideup  = gamepad2.right_trigger;
+            slidedwn = gamepad2.left_trigger;
 
-            float Ch1 = -gamepad1.left_stick_y;
-            float Ch2 =  gamepad1.left_stick_x;
-            float Ch3 =  gamepad2.right_stick_x;
+            Ch1 = -gamepad1.left_stick_y;
+            Ch2 =  gamepad1.left_stick_x;
+            Ch3 =  gamepad1.right_stick_x;
 
-            float RFPower;
-            float RBPower;
-            float LFPower;
-            float LBPower;
+            if(gamepad2.a && (runtime.milliseconds() - timePressed) > 300) {
+                if (gamepad2.a && robo.leftArm.getPosition() == 1) {
 
-            float SlidePwr;
+                    robo.leftArm.setPosition(0.5);
+                    robo.rightArm.setPosition(0.5);
+                    timePressed = runtime.milliseconds();
 
-            if (gamepad2.a){
-
-                leftArm.setPosition(0.5);
-                rightArm.setPosition(0.5);
-
-            }else if(gamepad2.b){
-
-                leftArm.setPosition(0);
-                rightArm.setPosition(1);
-
-            }else{
-
-                break;
-
+                } else {
+                    robo.leftArm.setPosition(1);
+                    robo.rightArm.setPosition(0);
+                    timePressed = runtime.milliseconds();
+                }
             }
-
             RFPower = Range.clip(Ch1 + Ch2 - Ch3, -1, 1);
-            RBPower = Range.clip(-Ch1 - Ch2 - Ch3, -1, 1);
+            RBPower = Range.clip(Ch1 - Ch2 - Ch3, -1, 1);
             LFPower = Range.clip(Ch1 - Ch2 + Ch3, -1, 1);
-            LBPower = Range.clip(-Ch1 + Ch2 + Ch3, -1, 1);
+            LBPower = Range.clip(Ch1 + Ch2 + Ch3, -1, 1);
 
             SlidePwr = Range.clip(slideup - slidedwn, -1, 1);
 
-            RFMotor.setPower(RFPower);
-            RBMotor.setPower(RBPower);
-            LFMotor.setPower(LFPower);
-            LBMotor.setPower(LBPower);
+            robo.RFMotor.setPower(RFPower);
+            robo.RBMotor.setPower(RBPower);
+            robo.LFMotor.setPower(LFPower);
+            robo.LBMotor.setPower(LBPower);
 
-            Slide.setPower(SlidePwr);
+            robo.Arm.setPower(SlidePwr);
 
             idle();
 
