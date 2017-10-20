@@ -58,16 +58,24 @@ public class MecanumRC extends LinearOpMode {
             if(gamepad2.a && (runtime.milliseconds() - timePressed) > 300) {
                 if (gamepad2.a && robo.leftArm.getPosition() == 1) {
 
-                    robo.leftArm.setPosition(0.5);
-                    robo.rightArm.setPosition(0.5);
-                    timePressed = runtime.milliseconds();
-
-                } else {
                     robo.leftArm.setPosition(1);
                     robo.rightArm.setPosition(0);
                     timePressed = runtime.milliseconds();
+
+                } else {
+                    robo.leftArm.setPosition(0.3);
+                    robo.rightArm.setPosition(0.7);
+                    timePressed = runtime.milliseconds();
                 }
             }
+
+            if(gamepad2.b){
+
+                robo.leftArm.setPosition(0.7);
+                robo.rightArm.setPosition(0.4);
+
+            }
+
             RFPower = Range.clip(Ch1 + Ch2 - Ch3, -1, 1);
             RBPower = Range.clip(Ch1 - Ch2 - Ch3, -1, 1);
             LFPower = Range.clip(Ch1 - Ch2 + Ch3, -1, 1);
