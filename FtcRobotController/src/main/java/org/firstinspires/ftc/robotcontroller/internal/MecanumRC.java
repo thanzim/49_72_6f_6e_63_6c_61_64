@@ -59,7 +59,7 @@ public class MecanumRC extends LinearOpMode {
             Ch3 =  gamepad1.right_stick_x;
 
             if(gamepad2.a && (runtime.milliseconds() - timePressed) > 300) {
-                if (gamepad2.a && robo.leftArm.getPosition() == 1) {
+                if (gamepad2.a && robo.leftArm.getPosition() == 0.7) {
 
                     robo.leftArm.setPosition(0.4);
                     robo.rightArm.setPosition(0.7);
