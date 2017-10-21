@@ -2,31 +2,28 @@ package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 /**
- * Created by Flash on 10/12/2017.
+ * Created by Flash on 10/20/2017.
  */
 
-
-@TeleOp(name = "MecRC")
-public class MecanumRC extends LinearOpMode {
+@TeleOp(name = "MecTank")
+public class MecTank extends LinearOpMode{
 
     robot robo = new robot();
     ElapsedTime runtime = new ElapsedTime();
 
 
-    float slideup;
-    float slidedwn;
+    //float slideup;
+    //float slidedwn;
     float slide;
 
     float Ch1;
     float Ch2;
-    float Ch3;
+    float trR;
+    float trL;
 
     float RFPower;
     float RBPower;
@@ -55,8 +52,9 @@ public class MecanumRC extends LinearOpMode {
             slide = (-gamepad2.right_stick_y > 0.10 || -gamepad2.right_stick_y < -0.10 ? -gamepad2.right_stick_y : 0);
 
             Ch1 = -gamepad1.left_stick_y;
-            Ch2 =  gamepad1.left_stick_x;
-            Ch3 =  gamepad1.right_stick_x;
+            Ch2 = -gamepad1.right_stick_y;
+            trR = gamepad1.right_trigger;
+            trL = gamepad1.left_trigger;
 
             if(gamepad2.a && (runtime.milliseconds() - timePressed) > 300) {
                 if (gamepad2.a && robo.leftArm.getPosition() == 0.7) {
@@ -81,12 +79,45 @@ public class MecanumRC extends LinearOpMode {
 
             }
 
-            RFPower = Range.clip(Ch1 + Ch2 - Ch3, -1, 1);
-            RBPower = Range.clip(Ch1 - Ch2 - Ch3, -1, 1);
-            LFPower = Range.clip(Ch1 - Ch2 + Ch3, -1, 1);
-            LBPower = Range.clip(Ch1 + Ch2 + Ch3, -1, 1);
+            if(gamepad2.dpad_up){
+
+                robo.Flickr.setPosition(0.6);
+
+            }
+
+            if (gamepad2.dpad_down){
+
+                robo.Flickr.setPosition(0.1);
+
+            }
+
+            RFPower = Range.clip(Ch1 + Ch2 - trR + trL, -1, 1);
+            RBPower = Range.clip(Ch1 + Ch2 + trR - trL, -1, 1);
+            LFPower = Range.clip(Ch1 + Ch2 + trR - trL, -1, 1);
+            LBPower = Range.clip(Ch1 + Ch2 - trR + trL, -1, 1);
 
             SlidePwr = Range.clip(slide, -1, 1);
+
+            if(trR > 0){
+
+                while(trR > 0) {
+
+                    trL = 0;
+                    break;
+
+                }
+                break;
+
+            }else if(trL > 0){
+
+                while(trL > 0) {
+
+                    trR = 0;
+                    break;
+
+                }
+                break;
+            }
 
             robo.RFMotor.setPower(RFPower);
             robo.RBMotor.setPower(RBPower);
@@ -99,4 +130,5 @@ public class MecanumRC extends LinearOpMode {
 
         }
     }
+
 }

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -7,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  * Created by Robotics15 on 10/14/2017.
  */
 @TeleOp(name="TankDrive", group = "")
+@Disabled
 public class TankDrive extends LinearOpMode{
 
     robot robo = new robot();
