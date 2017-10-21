@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * Created by Thanzim on 10/8/2017.
  */
 
-public class thanzim_gyro extends robot {
+public class gyro_source extends robot {
 
 
 

@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class Debugger extends LinearOpMode {
 
     robot robo = new robot();
-    thanzim_gyro tgyro = new thanzim_gyro();
+    gyro_source tgyro = new gyro_source();
 
     String[] method_ids = {"gyro_1", "gyro_2"};
     String selected_id = "none";
