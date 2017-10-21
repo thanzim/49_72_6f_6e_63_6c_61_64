@@ -22,8 +22,11 @@ public class MecTank extends LinearOpMode{
 
     float Ch1;
     float Ch2;
+    float Ch3;
     float trR;
     float trL;
+
+
 
     float RFPower;
     float RBPower;
@@ -55,6 +58,8 @@ public class MecTank extends LinearOpMode{
             Ch2 = -gamepad1.right_stick_y;
             trR = gamepad1.right_trigger;
             trL = gamepad1.left_trigger;
+            Ch3 = trR - trL;
+
 
             if(gamepad2.a && (runtime.milliseconds() - timePressed) > 300) {
                 if (gamepad2.a && robo.leftArm.getPosition() == 0.7) {
@@ -91,33 +96,12 @@ public class MecTank extends LinearOpMode{
 
             }
 
-            RFPower = Range.clip(Ch1 + Ch2 - trR + trL, -1, 1);
-            RBPower = Range.clip(Ch1 + Ch2 + trR - trL, -1, 1);
-            LFPower = Range.clip(Ch1 + Ch2 + trR - trL, -1, 1);
-            LBPower = Range.clip(Ch1 + Ch2 - trR + trL, -1, 1);
+            RFPower = Range.clip(Ch2 - Ch3, -1, 1);
+            RBPower = Range.clip(Ch2 + Ch3, -1, 1);
+            LFPower = Range.clip(Ch1 + Ch3, -1, 1);
+            LBPower = Range.clip(Ch1 - Ch3, -1, 1);
 
             SlidePwr = Range.clip(slide, -1, 1);
-
-            if(trR > 0){
-
-                while(trR > 0) {
-
-                    trL = 0;
-                    break;
-
-                }
-                break;
-
-            }else if(trL > 0){
-
-                while(trL > 0) {
-
-                    trR = 0;
-                    break;
-
-                }
-                break;
-            }
 
             robo.RFMotor.setPower(RFPower);
             robo.RBMotor.setPower(RBPower);
