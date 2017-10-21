@@ -58,7 +58,7 @@ public class MecTank extends LinearOpMode{
             Ch2 = -gamepad1.right_stick_y;
             trR = gamepad1.right_trigger;
             trL = gamepad1.left_trigger;
-            Ch3 = trR - trL;
+            Ch3 = trL - trR;
 
 
             if(gamepad2.a && (runtime.milliseconds() - timePressed) > 300) {

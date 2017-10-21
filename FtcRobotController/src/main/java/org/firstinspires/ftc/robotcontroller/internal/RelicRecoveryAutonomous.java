@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  */
 
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "Auto Blue", group = "Dev")
+@Autonomous(name = "Auto Blue", group = "Dev")
 public class RelicRecoveryAutonomous extends LinearOpMode {
 
     robot robo = new robot(); //getting 'magic' objects from spellbook
@@ -22,7 +22,9 @@ public class RelicRecoveryAutonomous extends LinearOpMode {
         waitForStart();
 
 
-            robo.bejewel(); //Hit jewel
+            robo.bejewelblue(); //Hit jewel
+
+            sleep(1500);
 
             robo.move(1, 1000); //fwd
 

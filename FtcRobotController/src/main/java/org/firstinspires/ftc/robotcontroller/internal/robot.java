@@ -58,11 +58,10 @@ public class robot {
     VuforiaLocalizer vuforia;
 
     /**
-     * Welcome to Ironclad 8080's spell-book.
-     *
      * This is basically a method repository or cache for all of our methods
      *
      * This class is used in other programs for methods. Mainly Autonomous protocols
+     * as well as initialization protocols
      **/
 
 
@@ -94,19 +93,20 @@ public class robot {
         while (mrGyro.isCalibrating()) {
         }
 
-        RFMotor.setDirection(DcMotor.Direction.REVERSE);
-        RBMotor.setDirection(DcMotor.Direction.REVERSE);
+        LFMotor.setDirection(DcMotor.Direction.REVERSE);
+        LBMotor.setDirection(DcMotor.Direction.REVERSE);
 
         colorSensor.enableLed(true);
+
+        Flickr.setPosition(0.6);
+
+        leftArm.setPosition(1);
+        rightArm.setPosition(0);
 
         tel.addLine("Gyro has been calibrated");
         tel.addLine("Ready to go compadre");
         tel.update();
     }
-
-
-
-
 
 
     public void initDriveTrain(HardwareMap hwm, Telemetry tel) throws InterruptedException {
@@ -143,14 +143,11 @@ public class robot {
     }
 
 
-
-
-
-
-
     /**
      * The following are general movement methods for a 4wd mecanum chassis
      **/
+
+
     @Deprecated
     public void basic_gyroTurn(double power, int angle) throws InterruptedException {
 
@@ -178,6 +175,7 @@ public class robot {
 
     }
 
+
     @Deprecated
     public void basic_leftGyroTurn(double power, int angle) throws InterruptedException {
 
@@ -204,6 +202,7 @@ public class robot {
 
     }
 
+
     public void gyroTelemetry(Telemetry tel) {
 
         //basic gyro telemetry
@@ -215,11 +214,44 @@ public class robot {
 
     }
 
-    public void bejewel() throws InterruptedException {
 
-        //Jewel mission decision method
+    public void bejewelblue() throws InterruptedException {
 
-        Flickr.setPosition(1);
+        //Jewel mission decision method (blue)
+
+        Flickr.setPosition(0);
+
+        sleep(1500);
+
+        if (colorSensor.blue() > 2) {
+
+            right(0.3, 500);
+
+            left(0.3, 500);
+
+            Flickr.setPosition(0.6);
+
+
+        }
+
+        if (colorSensor.red() > 2) {
+
+            left(0.3, 500);
+
+            right(0.3, 500);
+
+            Flickr.setPosition(0.6);
+
+        }
+
+    }
+
+
+    public void bejewelred() throws InterruptedException {
+
+        //Jewel mission decision method (red)
+
+        Flickr.setPosition(0.1);
 
         if (colorSensor.blue() > 2) {
 
@@ -240,6 +272,7 @@ public class robot {
 
     }
 
+
     public void left(double power, long millis) throws InterruptedException {
 
         //Basic move left
@@ -258,6 +291,7 @@ public class robot {
 
     }
 
+
     public void left(double power) {
 
         //Basic move left
@@ -268,6 +302,7 @@ public class robot {
         LBMotor.setPower(-power);
 
     }
+
 
     public void right(double power, long millis) throws InterruptedException {
 
@@ -286,6 +321,7 @@ public class robot {
         LBMotor.setPower(0);
 
     }
+
 
     public void right(double power){
 
@@ -316,6 +352,7 @@ public class robot {
 
     }
 
+
     public void move(double power) {
 
         //Basic move forwards
@@ -327,9 +364,11 @@ public class robot {
 
     }
 
+
     public void stop(){
         move(0);  // lazy coding, amirite?
     }
+
 
     public void strafeLeft(double power, long millis) throws InterruptedException {
 
@@ -349,6 +388,7 @@ public class robot {
 
     }
 
+
     public void strafeRight(double power, long millis) throws InterruptedException {
 
         //strafe right
@@ -367,9 +407,11 @@ public class robot {
 
     }
 
+
     /**
      * Vuforia specific development methods
      **/
+
 
     public void vudoo(HardwareMap hwm, Telemetry tel) throws InterruptedException{
 

@@ -9,7 +9,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  */
 
 @Autonomous(name="testauto", group = "")
-@Disabled
 public class TestAutonomous extends LinearOpMode{
 
     robot robo = new robot();
