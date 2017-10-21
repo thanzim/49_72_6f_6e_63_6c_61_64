@@ -20,7 +20,7 @@ public class thanzim_gyro extends robot {
         heading = mrGyro.getHeading();
         error = (angle - heading);
 
-        if(error < 0){
+        if(error > 0){
             CCW = true;
         }
         else{
@@ -68,7 +68,7 @@ public class thanzim_gyro extends robot {
         heading = mrGyro.getHeading();
         error = ((angle + heading) - heading);
 
-        if(error < 0){
+        if(error > 0){
             CCW = true;
         }
         else{
