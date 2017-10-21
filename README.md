@@ -55,7 +55,7 @@ October 7, 2017
 **************************************************************************************
 #### Version 1.2.3
  * Furthered development for Vuforia based decision system. Will need testing to develop further.
-   - [ ] Expected testing day: 10/13/2017 
+   - [ ] Expected testing day: 10/21/2017 
  * Removed unused import statements
  * Fixed spacing/formtting issues
  * Adding a README with a changelog (the one you're reading now :stuck_out_tongue_winking_eye: )
