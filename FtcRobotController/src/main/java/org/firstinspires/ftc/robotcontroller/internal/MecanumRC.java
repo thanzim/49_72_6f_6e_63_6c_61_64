@@ -52,7 +52,7 @@ public class MecanumRC extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
-        
+
         while (opModeIsActive()){
 
             float slideup  = gamepad2.right_trigger;
