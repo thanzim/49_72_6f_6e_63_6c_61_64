@@ -91,10 +91,10 @@ public class MecTank extends LinearOpMode{
 
             }
 
-            RFPower = Range.clip(Ch1 + Ch2 - trR + trL, -1, 1);
-            RBPower = Range.clip(Ch1 + Ch2 + trR - trL, -1, 1);
-            LFPower = Range.clip(Ch1 + Ch2 + trR - trL, -1, 1);
-            LBPower = Range.clip(Ch1 + Ch2 - trR + trL, -1, 1);
+            RFPower = Range.clip(Ch2 - trR + trL, -1, 1);
+            RBPower = Range.clip(Ch2 + trR - trL, -1, 1);
+            LFPower = Range.clip(Ch1 + trR - trL, -1, 1);
+            LBPower = Range.clip(Ch1 - trR + trL, -1, 1);
 
             SlidePwr = Range.clip(slide, -1, 1);
 
@@ -106,7 +106,7 @@ public class MecTank extends LinearOpMode{
                     break;
 
                 }
-                break;
+
 
             }else if(trL > 0){
 
@@ -116,7 +116,7 @@ public class MecTank extends LinearOpMode{
                     break;
 
                 }
-                break;
+
             }
 
             robo.RFMotor.setPower(RFPower);
