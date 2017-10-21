@@ -10,6 +10,7 @@
 **************************************************************************************
 #### Version 1.3.3
  * As per request of our team drivers, we added a class that drives mecanum in a "tank" configuration
+ * Made README show latest version instead of oldest first
 
 Ironclad 8080
 
@@ -36,7 +37,7 @@ October 13, 2017
  * Added more Mecanum methods
  * Replaced back() and forward() methods with a universal move() function
  * Added some WIP ultrasonic code
- * Deprecaed older gyro code
+ * Deprecated older gyro code
  * Added untested and limited isOpModeActive support
  * Created 'testauto' autonomous for testing and developmental purposes
  * Other bug fixes
