@@ -122,4 +122,19 @@ October 13, 2017
 Ironclad 8080
 
 October 13, 2017
+**************************************************************************************
+#### Version 1.3.2
+ * Added a method "bejeweled()" for the autonomous jewel mission
+
+Ironclad 8080
+
+October 18, 2017
+**************************************************************************************
+#### Version 1.3.3
+ * As per request of our team drivers, we added a class that drives mecanum in a "tank" configuration
+
+Ironclad 8080
+
+October 20, 2017
+**************************************************************************************
  
