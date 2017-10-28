@@ -40,7 +40,7 @@ public class MecTank extends LinearOpMode{
     @Override
     public void runOpMode() throws InterruptedException{
 
-        robo.initDriveTrain(hardwareMap, telemetry);
+        robo.init(hardwareMap, telemetry);
 
         robo.leftArm.setPosition(1);
         robo.rightArm.setPosition(0);
@@ -48,6 +48,8 @@ public class MecTank extends LinearOpMode{
         waitForStart();
 
         while (opModeIsActive()){
+
+            robo.returnGeneralTelemetry(telemetry);
 
             //slideup  = gamepad2.right_trigger;
             //slidedwn = gamepad2.left_trigger;

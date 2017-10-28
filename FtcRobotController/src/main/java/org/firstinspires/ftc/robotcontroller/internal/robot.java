@@ -91,8 +91,12 @@ public class robot {
 
         mrGyro.calibrate();
 
-        while (mrGyro.isCalibrating()) {
+        while (mrGyro.isCalibrating()){
+            tel.addLine("Calibrating...");
+            tel.update();
         }
+
+        Flickr.setPosition(0.6);
 
         RFMotor.setDirection(DcMotor.Direction.REVERSE);
         RBMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -367,6 +371,8 @@ public class robot {
 
     }
 
+
+
     /**
      * Vuforia specific development methods
      **/
@@ -471,6 +477,16 @@ public class robot {
 
             tel.update();
         }
+    }
+
+    public void returnGeneralTelemetry(Telemetry telem){
+
+        telem.addData("Color Sensor", colorSensor.argb());
+        telem.addData("Gyro Z-Value", mrGyro.getIntegratedZValue());
+        telem.addData("Gyro Heading", mrGyro.getHeading());
+        telem.update();
+
+
     }
 }
 

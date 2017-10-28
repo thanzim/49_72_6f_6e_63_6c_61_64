@@ -9,7 +9,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  */
 
 @Autonomous(name="testauto", group = "")
-@Disabled
 public class TestAutonomous extends LinearOpMode{
 
     robot robo = new robot();
@@ -22,10 +21,23 @@ public class TestAutonomous extends LinearOpMode{
 
         waitForStart();
 
-        gyro.gyroAbsoluteTurn(90,1, this);
-        gyro.gyroRelativeTurn(-35, 1, this);
-        gyro.gyroAbsoluteTurn(90,1,this);
+        gyro.gyroAbsoluteTurn(90,1, this, telemetry);
+        //quickCheck();
+        //quickCheck();
+        gyro.gyroAbsoluteTurn(0,1,this, telemetry);
+        //quickCheck();
+        gyro.gyroAbsoluteTurn(275,1,this, telemetry);
+        gyro.gyroAbsoluteTurn(90,1,this, telemetry);
+
+
+
 
 
     }
+
+    public void quickCheck(){
+        robo.returnGeneralTelemetry(telemetry);
+        sleep(1000);
+    }
+
 }

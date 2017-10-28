@@ -32,6 +32,7 @@ public class MecanumRC extends LinearOpMode {
     float RFPower;
     float RBPower;
     float LFPower;
+
     float LBPower;
 
     float SlidePwr;
@@ -41,7 +42,7 @@ public class MecanumRC extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException{
 
-        robo.initDriveTrain(hardwareMap, telemetry);
+        robo.init(hardwareMap, telemetry);
 
         robo.leftArm.setPosition(1);
         robo.rightArm.setPosition(0);
@@ -49,6 +50,8 @@ public class MecanumRC extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()){
+
+
 
             //slideup  = gamepad2.right_trigger;
             //slidedwn = gamepad2.left_trigger;
@@ -95,6 +98,8 @@ public class MecanumRC extends LinearOpMode {
             robo.LBMotor.setPower(LBPower);
 
             robo.Arm.setPower(SlidePwr);
+
+            robo.returnGeneralTelemetry(telemetry);
 
             idle();
 
