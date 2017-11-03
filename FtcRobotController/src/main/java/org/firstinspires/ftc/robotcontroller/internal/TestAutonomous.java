@@ -8,11 +8,13 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * Created by Thanzim on 10/12/2017.
  */
 
-@Autonomous(name="testauto", group = "")
+@Autonomous(name="testautooo", group = "")
 public class TestAutonomous extends LinearOpMode{
 
     robot robo = new robot();
     gyro_source gyro = new gyro_source();
+    ultrasensor_source ult = new ultrasensor_source();
+
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -21,13 +23,9 @@ public class TestAutonomous extends LinearOpMode{
 
         waitForStart();
 
-        gyro.gyroAbsoluteTurn(90,1, this, telemetry);
-        //quickCheck();
-        //quickCheck();
-        gyro.gyroAbsoluteTurn(0,1,this, telemetry);
-        //quickCheck();
-        gyro.gyroAbsoluteTurn(275,1,this, telemetry);
-        gyro.gyroAbsoluteTurn(90,1,this, telemetry);
+        ult.moveUntillLarger(0.8, 15, robo.ultra, false, this);
+        gyro.gyroAbsoluteTurn(90,1,this,telemetry);
+        ult.moveUntillLesser(1,7,robo.ultra, true, this);
 
 
 

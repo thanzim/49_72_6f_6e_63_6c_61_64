@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -26,6 +27,7 @@ public class gyro_source extends robot {
         }
         else{
             CCW = false;
+
         }
 
         while(error != 0 && method.opModeIsActive()) {
@@ -37,16 +39,24 @@ public class gyro_source extends robot {
             }else{
                 error = mrGyro.getHeading() - angle;
             }
-            pwfactor = (factor * (error/90)+.28);
+            pwfactor = Range.clip(factor * Math.pow(1.2,(error - 90))+.2,-1,1);
 
-            if(!CCW){
+
+            if(CCW){
                 left(pwfactor);
             }
             else{
                 right(pwfactor);
             }
 
+
+            t.addData("pwf",pwfactor);
+            t.addData("error",error);
+            t.update();
         }
+        t.addData("pwf",pwfactor);
+        t.addData("error",error);
+        t.update();
         stop();
     }
 

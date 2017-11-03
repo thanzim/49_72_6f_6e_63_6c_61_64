@@ -1,12 +1,15 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
+import com.qualcomm.robotcore.hardware.LightSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.UltrasonicSensor;
+
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
@@ -53,6 +56,10 @@ public class robot {
     public static GyroSensor gyro;
     public static ModernRoboticsI2cGyro mrGyro;
 
+    public static LightSensor lightSensor;
+
+    public static UltrasonicSensor ultra;
+
     int zV;
 
     VuforiaLocalizer vuforia;
@@ -77,6 +84,8 @@ public class robot {
         LFMotor = hwm.get(DcMotor.class, "LF");
         LBMotor = hwm.get(DcMotor.class, "LB");
 
+        lightSensor = hardwareMap.get(LightSensor.class, "sensor_light");
+
         Arm = hwm.get(DcMotor.class, "arm");
 
         Flickr = hwm.get(Servo.class, "flck");
@@ -88,6 +97,8 @@ public class robot {
         gyro = hwm.gyroSensor.get("g");
         mrGyro = (ModernRoboticsI2cGyro) gyro;
 
+        ultra = hwm.get(UltrasonicSensor.class, "ultra1");
+
         mrGyro.calibrate();
 
         while (mrGyro.isCalibrating()){
@@ -95,19 +106,15 @@ public class robot {
             tel.update();
         }
 
-<<<<<<< HEAD
+
         Flickr.setPosition(0.6);
 
-        RFMotor.setDirection(DcMotor.Direction.REVERSE);
-        RBMotor.setDirection(DcMotor.Direction.REVERSE);
-=======
         LFMotor.setDirection(DcMotor.Direction.REVERSE);
         LBMotor.setDirection(DcMotor.Direction.REVERSE);
->>>>>>> f2db3dce377683c1251acadcb339fea4b1056b3a
+
 
         colorSensor.enableLed(true);
 
-        Flickr.setPosition(0.6);
 
         leftArm.setPosition(1);
         rightArm.setPosition(0);
@@ -142,8 +149,7 @@ public class robot {
         LFMotor.setDirection(DcMotor.Direction.REVERSE);
         LBMotor.setDirection(DcMotor.Direction.REVERSE);
 
-        colorSensor.enableLed(true);
-        Flickr.setPosition(0.6);
+        colorSensor.enableLed(false);
 
         tel.addLine("Ready to go drivetrain");
         tel.update();
@@ -232,22 +238,22 @@ public class robot {
 
         sleep(1500);
 
-        if (colorSensor.blue() > 2) {
+        if (colorSensor.blue() >= 2) {
 
-            right(0.3, 500);
+            right(1, 300);
 
-            left(0.3, 500);
+            left(1, 300);
 
             Flickr.setPosition(0.6);
 
 
         }
 
-        if (colorSensor.red() > 2) {
+        else{
 
-            left(0.3, 500);
+            left(1, 300);
 
-            right(0.3, 500);
+            right(1, 300);
 
             Flickr.setPosition(0.6);
 
@@ -417,10 +423,7 @@ public class robot {
     }
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f2db3dce377683c1251acadcb339fea4b1056b3a
     /**
      * Vuforia specific development methods
      **/
@@ -533,6 +536,8 @@ public class robot {
         telem.addData("Color Sensor", colorSensor.argb());
         telem.addData("Gyro Z-Value", mrGyro.getIntegratedZValue());
         telem.addData("Gyro Heading", mrGyro.getHeading());
+        telem.addData("LS", leftArm.getPosition());
+        telem.addData("RS", rightArm.getPosition());
         telem.update();
 
 

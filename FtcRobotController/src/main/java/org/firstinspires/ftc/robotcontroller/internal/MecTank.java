@@ -36,14 +36,21 @@ public class MecTank extends LinearOpMode{
     float SlidePwr;
 
     double timePressed = -501;
+    double timePressed2 = -501;
+
+
+
+
 
     @Override
     public void runOpMode() throws InterruptedException{
 
-        robo.init(hardwareMap, telemetry);
+        robo.initDriveTrain(hardwareMap, telemetry);
 
         robo.leftArm.setPosition(1);
         robo.rightArm.setPosition(0);
+
+
 
         waitForStart();
 
@@ -98,7 +105,14 @@ public class MecTank extends LinearOpMode{
 
             }
 
-            RFPower = Range.clip(Ch2 - Ch3, -1, 1);
+            if (gamepad2.x){
+                robo.leftArm.setPosition(0.1);
+                robo.rightArm.setPosition(0.9);
+            }
+
+
+
+            RFPower = Range.clip(Ch2 - (Ch3), -1, 1);
             RBPower = Range.clip(Ch2 + Ch3, -1, 1);
             LFPower = Range.clip(Ch1 + Ch3, -1, 1);
             LBPower = Range.clip(Ch1 - Ch3, -1, 1);
@@ -111,6 +125,7 @@ public class MecTank extends LinearOpMode{
             robo.LBMotor.setPower(LBPower);
 
             robo.Arm.setPower(SlidePwr);
+
 
             idle();
 
