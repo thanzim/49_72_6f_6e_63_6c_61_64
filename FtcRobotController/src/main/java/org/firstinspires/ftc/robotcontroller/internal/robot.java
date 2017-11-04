@@ -64,6 +64,8 @@ public class robot {
 
     VuforiaLocalizer vuforia;
 
+    gyro_source gyrocodec = new gyro_source();
+
     /**
      * This is basically a method repository or cache for all of our methods
      *
@@ -84,7 +86,7 @@ public class robot {
         LFMotor = hwm.get(DcMotor.class, "LF");
         LBMotor = hwm.get(DcMotor.class, "LB");
 
-        lightSensor = hardwareMap.get(LightSensor.class, "sensor_light");
+        lightSensor = hwm.get(LightSensor.class, "sensor_light");
 
         Arm = hwm.get(DcMotor.class, "arm");
 
@@ -114,6 +116,7 @@ public class robot {
 
 
         colorSensor.enableLed(true);
+        lightSensor.enableLed(true);
 
 
         leftArm.setPosition(1);
@@ -141,6 +144,7 @@ public class robot {
         rightArm = hwm.get(Servo.class, "rs");
 
         colorSensor = hwm.get(ColorSensor.class, "CS");
+        lightSensor = hwm.get(LightSensor.class, "sensor_light");
 
         gyro = hwm.gyroSensor.get("g");
         mrGyro = (ModernRoboticsI2cGyro) gyro;
@@ -149,7 +153,8 @@ public class robot {
         LFMotor.setDirection(DcMotor.Direction.REVERSE);
         LBMotor.setDirection(DcMotor.Direction.REVERSE);
 
-        colorSensor.enableLed(false);
+        colorSensor.enableLed(true);
+        lightSensor.enableLed(true);
 
         tel.addLine("Ready to go drivetrain");
         tel.update();
@@ -385,7 +390,7 @@ public class robot {
     }
 
 
-    public void strafeLeft(double power, long millis) throws InterruptedException {
+    public void strafeRight(double power, long millis) throws InterruptedException {
 
         //strafe left
 
@@ -404,7 +409,7 @@ public class robot {
     }
 
 
-    public void strafeRight(double power, long millis) throws InterruptedException {
+    public void strafeLeft(double power, long millis) throws InterruptedException {
 
         //strafe right
 
@@ -421,6 +426,48 @@ public class robot {
         LBMotor.setPower(0);
 
     }
+
+    public void strafeLeft_Tape(double power) throws InterruptedException {
+
+
+        while(lightSensor.getRawLightDetected() > 1.20){
+
+            RFMotor.setPower(-power);
+            RBMotor.setPower(power);
+            LFMotor.setPower(power);
+            LBMotor.setPower(-power);
+
+
+        }
+
+        RFMotor.setPower(0);
+        RBMotor.setPower(0);
+        LFMotor.setPower(0);
+        LBMotor.setPower(0);
+
+    }
+
+    public void straighten(Telemetry t, LinearOpMode thi){
+
+        if(mrGyro.getIntegratedZValue() > 0){
+
+            gyrocodec.gyroAbsoluteTurn(0,-1,thi,t);
+
+        }else if(mrGyro.getIntegratedZValue() < 0){
+
+            gyrocodec.gyroAbsoluteTurn(0,1,thi,t);
+
+        }
+        else{
+
+
+
+        }
+
+    }
+
+
+
 
 
 
@@ -538,6 +585,8 @@ public class robot {
         telem.addData("Gyro Heading", mrGyro.getHeading());
         telem.addData("LS", leftArm.getPosition());
         telem.addData("RS", rightArm.getPosition());
+        telem.addData("Raw", lightSensor.getRawLightDetected());
+        telem.addData("Normal", lightSensor.getLightDetected());
         telem.update();
 
 

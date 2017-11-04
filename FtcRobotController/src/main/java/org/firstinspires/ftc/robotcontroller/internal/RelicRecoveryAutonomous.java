@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 /**
  * Created by Flash on 10/7/2017.
@@ -11,6 +12,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class RelicRecoveryAutonomous extends LinearOpMode {
 
     robot robo = new robot(); //getting 'magic' objects from spellbook
+    gyro_source gyrocodec = new gyro_source();
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -24,25 +26,28 @@ public class RelicRecoveryAutonomous extends LinearOpMode {
 
         waitForStart();
 
-        robo.leftArm.setPosition(0.4);
-        robo.rightArm.setPosition(0.7);
+        //robo.leftArm.setPosition(0.4);
+        //robo.rightArm.setPosition(0.7);
 
-        robo.returnGeneralTelemetry(telemetry);
+        //robo.returnGeneralTelemetry(telemetry);
 
         //sleep(10000);
 
-        robo.Arm.setPower(0.2);
+        //robo.Arm.setPower(0.2);
 
-        sleep(200);
+        //sleep(200);
 
-        robo.bejewelblue(); //Hit jewel
+        //robo.bejewelblue(); //Hit jewel
 
-        robo.Arm.setPower(0.2);
+        //robo.Arm.setPower(0.2);
 
-        sleep(200);
+        //sleep(200);
 
-        robo.strafeRight(1, 1000);
+        robo.strafeRight(0.2, 10000);
+
+        robo.straighten(telemetry, this);
 
     }
+
 
 }
